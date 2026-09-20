@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appliance Comparison - Inspired Home Solutions</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+header{
+    background:#0d6efd;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+nav{
+    background:#084298;
+    padding:12px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:15px;
+    font-weight:bold;
+}
+
+.container{
+    width:90%;
+    margin:30px auto;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.compare-box{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card{
+    background:white;
+    width:320px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+select{
+    width:100%;
+    padding:10px;
+    margin-top:15px;
+}
+
+table{
+    width:100%;
+    margin-top:30px;
+    border-collapse:collapse;
+    background:white;
+}
+
+table th,table td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+
+th{
+    background:#0d6efd;
+    color:white;
+}
+
+button{
+    background:#0d6efd;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    margin-top:20px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+button:hover{
+    background:#084298;
+}
+
+footer{
+    margin-top:40px;
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>Inspired Home Solutions</h1>
+<p>Home Appliance Comparison</p>
+</header>
+
+<nav>
+<a href="main.html">Home</a>
+<a href="homeappli.html">Appliances</a>
+<a href="review.html">Reviews</a>
+<a href="booking.html">contact</a>
+</nav>
+
+<div class="container">
+
+<h2>Compare Appliances</h2>
+
+<div class="compare-box">
+
+<div class="card">
+<img id="img1" src="../images/refrigerator.jpg" alt="">
+<select id="item1" onchange="loadProducts()">
+<option>Refrigerator</option>
+<option>Washing Machine</option>
+<option>Microwave Oven</option>
+</select>
+</div>
+
+<div class="card">
+<img id="img2" src="../images/washing.jpg" alt="">
+<select id="item2" onchange="loadProducts()">
+<option>Washing Machine</option>
+<option>Refrigerator</option>
+<option>Microwave Oven</option>
+</select>
+</div>
+
+</div>
+
+<center>
+<button onclick="compare()">Compare</button>
+</center>
+
+<table>
+
+<tr>
+<th>Feature</th>
+<th>Appliance 1</th>
+<th>Appliance 2</th>
+</tr>
+
+<tr>
+<td>Price</td>
+<td id="price1">45,000</td>
+<td id="price2">35,000</td>
+</tr>
+
+<tr>
+<td>Rating</td>
+<td id="rating1">4.7 </td>
+<td id="rating2">4.5</td>
+</tr>
+
+<tr>
+<td>Energy Rating</td>
+<td id="energy1">5 Star</td>
+<td id="energy2">4 Star</td>
+</tr>
+
+<tr>
+<td>Warranty</td>
+<td id="war1">10 Years</td>
+<td id="war2">5 Years</td>
+</tr>
+
+</table>
+
+</div>
+
+<footer>
+ 2026 Inspired Home Solutions
+</footer>
+
+<script>
+
+const data={
+
+"Refrigerator":{
+price:"45,000",
+rating:"4.7 ",
+energy:"5 Star",
+war:"10 Years",
+img:"../images/refrigerator.jpg"
+},
+
+"Washing Machine":{
+price:"35,000",
+rating:"4.5 ",
+energy:"4 Star",
+war:"5 Years",
+img:"../images/washing.jpg"
+},
+
+"Microwave Oven":{
+price:"18,000",
+rating:"4.4 ",
+energy:"5 Star",
+war:"3 Years",
+img:"../images/microwave.jpg"
+}
+
+};
+
+function loadProducts(){
+
+let a=document.getElementById("item1").value;
+let b=document.getElementById("item2").value;
+
+document.getElementById("img1").src=data[a].img;
+document.getElementById("img2").src=data[b].img;
+
+}
+
+function compare(){
+
+let a=data[document.getElementById("item1").value];
+let b=data[document.getElementById("item2").value];
+
+price1.innerHTML=a.price;
+price2.innerHTML=b.price;
+
+rating1.innerHTML=a.rating;
+rating2.innerHTML=b.rating;
+
+energy1.innerHTML=a.energy;
+energy2.innerHTML=b.energy;
+
+war1.innerHTML=a.war;
+war2.innerHTML=b.war;
+
+}
+
+</script>
+<script src="../js/data-fetch.js"></script>
+
+</body>
+</html>
